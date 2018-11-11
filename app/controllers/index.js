@@ -9,12 +9,12 @@ export default Controller.extend({
   isDisabled: not("isValid"),
 
   actions: {
-    saveInvitation() {
+    saveSubscribe() {
         const email = this.get('emailAddress');
   
-        const newInvitation = this.store.createRecord('invitation', { email });
+        const newSubscriber = this.store.createRecord('subscriber', { email });
   
-        newInvitation.save().then(response => {
+        newSubscriber.save().then(response => {
           this.set('responseMessage', `Thank you! We saved your email address with the following id: ${response.get('id')}`);
           this.set('emailAddress', '');
         });

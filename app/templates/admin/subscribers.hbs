@@ -1,0 +1,24 @@
+<div class="card-pf card-pf-view card-pf-view-xs">
+    <div class="card-pf-header text-center">
+        <h1>Subscribers</h1>
+    </div>
+    <div class="card-pf-body ">
+        <table class="table table-striped table-bordered table-hover no-footer">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each model as |subscriber|}}
+                <tr>
+                    <th>{{subscriber.id}}</th>
+                    <td>{{subscriber.email}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+
+        </table>
+    </div>
+</div>

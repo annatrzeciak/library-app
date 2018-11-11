@@ -1,0 +1,17 @@
+.navbar {
+    li {
+        .pficon {
+            padding-right: 4px;
+            padding-left: 4px;
+        }
+        
+    }
+    .navbar-utility{
+        li{
+            .btn.dropdown-toggle {
+                padding-top: 12px;
+                padding-bottom: 12px;
+            }
+        }
+    }
+}
