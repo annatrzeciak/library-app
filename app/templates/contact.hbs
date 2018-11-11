@@ -1,1 +1,28 @@
-<h1>Contact</h1>
+<div class="card-pf card-pf-view card-pf-view-xs">
+    <div class="card-pf-header text-center">
+        <h1>Contact</h1>
+    </div>
+
+    <div class="card-pf-body ">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                {{#if responseMessage}}
+                <div class="alert alert-success">{{responseMessage}}</div>
+                {{/if}}
+
+
+                <div class="form-group">
+                    <label>Email:</label>
+                    {{input type="email" class="form-control" placeholder="Enter email" value=emailAddress}}
+                </div>
+                <div class="form-group">
+                    <label>Message:</label>
+                    {{textarea class="form-control" placeholder="Your message. (At least 5 characters.)" rows="7" value=message}}
+                </div>
+
+                <button disabled={{isDisabled}} {{action 'sendMessage'}} class="btn btn-primary">Send</button>
+
+            </div>
+        </div>
+    </div>
+</div>
