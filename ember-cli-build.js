@@ -9,7 +9,10 @@ module.exports = function(defaults) {
       icons: {
         'free-solid-svg-icons': [
           'caret-down',
-          'user'
+          'user',
+          'ellipsis-v',
+          'plus',
+          'trash-alt',
          ]
       }
   }

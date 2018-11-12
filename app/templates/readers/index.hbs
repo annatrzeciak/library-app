@@ -1,0 +1,50 @@
+<div class="card-pf card-pf-view card-pf-view-xs">
+    <div class="card-pf-header ">
+        <h1 class="row">
+            <span class="col-xs-6">Readers list</span>
+            <span class="col-xs-6 text-right">
+                {{#link-to "readers.new" activeClass="active" class='btn btn-success'}} {{fa-icon 'plus'}} new reader {{/link-to}}
+            </span>
+        </h1>
+    </div>
+</div>
+<div class="row row-cards-pf">
+    {{#each model as |reader|}}
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card-pf card-pf-view">
+            <div class="card-pf-body">
+                <div class="card-pf-heading-kebab">
+                    <div class="dropup pull-right dropdown-kebab-pf">
+                        <button class="btn btn-link dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="true">
+                            {{fa-icon 'ellipsis-v'}}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right" >
+                            <li>
+                                <a href="">Edit</a>
+                            </li>
+                            <li>
+                                <a href="">Delete</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-pf-top-element">
+                    <h2 class="card-pf-title text-center ">
+                        <strong>{{reader.firstName}} {{reader.lastName}}</strong>
+                    </h2>
+                </div>
+                <p class="card-pf-info text-center">{{reader.address}}</p>
+                <p class="card-pf-info text-center">
+                    {{reader.phone}}
+                </p>
+                <p class="card-pf-info text-center">
+                    Number of borrowed books: <span class="badge badge-secondary">0</span>
+                </p>
+                
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>

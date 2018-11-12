@@ -1,0 +1,39 @@
+<div class="card-pf card-pf-view card-pf-view-xs">
+    <div class="card-pf-header text-center">
+        <h1>Add new reader</h1>
+    </div>
+
+    <div class="card-pf-body ">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">First name</label>
+                <div class="col-sm-10">
+                    {{input type="text" value=model.firstName class="form-control" placeholder="First name reader"}}
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="col-sm-2 control-label">Last name</label>
+                <div class="col-sm-10">
+                    {{input type="text" value=model.lastName class="form-control" placeholder="Last name reader"}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Address</label>
+                <div class="col-sm-10">
+                    {{input type="text" value=model.address class="form-control" placeholder="Address reader"}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Phone</label>
+                <div class="col-sm-10">
+                    {{input type="text" value=model.phone class="form-control" placeholder="Phone number reader"}}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default" {{action 'saveReader' model}}>Add reader to list</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
