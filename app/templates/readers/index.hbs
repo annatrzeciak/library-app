@@ -16,16 +16,15 @@
             <div class="card-pf-body">
                 <div class="card-pf-heading-kebab">
                     <div class="dropup pull-right dropdown-kebab-pf">
-                        <button class="btn btn-link dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="true">
+                        <button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             {{fa-icon 'ellipsis-v'}}
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-right" >
+                        <ul class="dropdown-menu dropdown-menu-right">
                             <li>
-                                <a href="">Edit</a>
+                                {{#link-to 'readers.edit' reader.id }}Edit{{/link-to}} 
                             </li>
                             <li>
-                                <a href="">Delete</a>
+                                <a href="" {{action 'deleteReader' reader}}>Delete</a>
                             </li>
                         </ul>
                     </div>
@@ -40,9 +39,10 @@
                     {{reader.phone}}
                 </p>
                 <p class="card-pf-info text-center">
-                    Number of borrowed books: <span class="badge badge-secondary">0</span>
+                    Number of borrowed books:
+                    <span class="badge badge-secondary">0</span>
                 </p>
-                
+
             </div>
         </div>
     </div>

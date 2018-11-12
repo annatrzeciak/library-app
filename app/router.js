@@ -16,6 +16,7 @@ Router.map(function() {
   });
   this.route('readers', function() {
     this.route('new');
+    this.route('edit', { path: '/edit/:reader_id' });
   });
   this.route('reader', function() {});
 });

@@ -8,6 +8,12 @@
 /bower_components/
 /node_modules/
 
+
+.firebase/
+.firebaserc
+firebase.json 
+
+
 # misc
 /.sass-cache
 /connect.lock
