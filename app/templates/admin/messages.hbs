@@ -1,0 +1,28 @@
+<div class="card-pf card-pf-view card-pf-view-xs">
+    <div class="card-pf-header text-center">
+        <h1>Messages</h1>
+    </div>
+    <div class="card-pf-body ">
+        <table class="table table-striped table-bordered table-hover no-footer">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>email</th>
+                    <th>message</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {{#each model as |message|}}
+                <tr>
+                    <th>{{message.id}}</th>
+                    <td>{{message.email}}</td>
+                    <td>{{message.message}}</td>
+                    
+                </tr>
+                {{/each}}
+            </tbody>
+
+        </table>
+    </div>
+</div>

@@ -12,6 +12,7 @@ Router.map(function() {
 
   this.route('admin', function() {
     this.route('subscribers');
+    this.route('messages');
   });
   this.route('readers', function() {
     this.route('new');
