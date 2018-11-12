@@ -13,12 +13,16 @@ Router.map(function() {
   this.route('admin', function() {
     this.route('subscribers');
     this.route('messages');
+    this.route('statistics');
   });
   this.route('readers', function() {
     this.route('new');
     this.route('edit', { path: '/edit/:reader_id' });
   });
-  this.route('reader', function() {});
+  this.route('books', function() {
+    this.route('new');
+    this.route('edit', { path: '/edit/:book_id' });
+  });
 });
 
 export default Router;

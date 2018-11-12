@@ -13,6 +13,8 @@ module.exports = function(defaults) {
           'ellipsis-v',
           'plus',
           'trash-alt',
+          'book-reader',
+          'book'
          ]
       }
   }

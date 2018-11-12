@@ -1,0 +1,15 @@
+<div class="card-pf card-pf-view card-pf-view-xs">
+    <div class="card-pf-header ">
+        <h1 class="row">
+            <span class="col-xs-6">Books list</span>
+            <span class="col-xs-6 text-right">
+                {{#link-to "books.new" activeClass="active" class='btn btn-success'}} {{fa-icon 'plus'}} new book {{/link-to}}
+            </span>
+        </h1>
+    </div>
+</div>
+<div class="row row-cards-pf">
+    {{#each model as |book|}} 
+        {{book-item book=book}}
+    {{/each}}
+</div>

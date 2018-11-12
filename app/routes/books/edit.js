@@ -2,23 +2,23 @@ import Route from "@ember/routing/route";
 
 export default Route.extend({
   model(params) {
-    return this.store.findRecord("reader", params.reader_id);
+    return this.store.findRecord("book", params.book_id);
   },
   
   setupController(controller, model) {
     this._super(controller, model);
 
-    controller.set("title", "Edit reader");
-    controller.set("buttonLabel", "Update reader");
+    controller.set("title", "Edit book");
+    controller.set("buttonLabel", "Update book");
   },
 
   renderTemplate() {
-    this.render("readers/form");
+    this.render("books/form");
   },
 
   actions: {
-    saveReader(reader) {
-      reader.save().then(() => this.transitionTo("readers"));
+    saveBook(book) {
+      book.save().then(() => this.transitionTo("books"));
     },
 
     willTransition(transition) {

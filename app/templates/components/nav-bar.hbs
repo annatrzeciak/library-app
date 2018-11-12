@@ -22,6 +22,8 @@
                     <a href="">Subscribers</a>{{/link-to}}
                     {{#link-to 'admin.messages' tagName="li"}}
                     <a href="">Messages</a>{{/link-to}}
+                    {{#link-to 'admin.statistics' tagName="li"}}
+                    <a href="">Statistics</a>{{/link-to}}
                 </ul>
             </li>
         </ul>
@@ -32,6 +34,9 @@
             {{/link-to}} 
             {{#link-to "readers" activeClass="active" tagName="li"}}
             <a href="">Readers</a>
+            {{/link-to}}
+            {{#link-to "books" activeClass="active" tagName="li"}}
+            <a href="">Books</a>
             {{/link-to}}
             {{#link-to "about" activeClass="active" tagName="li"}}
             <a href="">About</a>
