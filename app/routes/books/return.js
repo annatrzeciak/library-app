@@ -2,32 +2,23 @@ import Route from "@ember/routing/route";
 import { hash } from "rsvp";
 
 export default Route.extend({
-  selectedReaderId: null,
-
   model(params) {
     return hash({
-      readers: this.store.findAll("reader"),
       book: this.store.findRecord("book", params.book_id)
     });
   },
 
   setupController(controller, model) {
-    controller.set("buttonLabel", "Borrow");
-    controller.set("readers", model.readers);
+    controller.set("buttonLabel", "Return");
     controller.set("book", model.book);
-
     this._super(controller, model);
   },
 
   actions: {
-    selectReader(readerId) {
-      this.set("selectedReaderId", readerId);
-    },
-
-    borrowBook([book, readerId]) {
-      var reader = this.store.peekRecord("reader", readerId);
-      reader.get("books").pushObject(book);
-      book.set("reader", reader);
+    returnBook([book, readerId]) {
+      var reader = this.store.peekRecord("reader", book.get("reader.id"));
+      reader.get("books").removeObject(book);
+      book.set("reader", "");
 
       book
         .save()

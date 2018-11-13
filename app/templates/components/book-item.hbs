@@ -35,7 +35,7 @@
             <p class="card-pf-info text-center">
                 {{#if book.reader }} 
                     {{!-- {{#link-to 'books.return' book.id class="btn btn-primary"}}Return{{/link-to}}  --}}
-                    <a href="" class="btn btn-primary">Return</a>
+                    {{#link-to 'books.return' book.id class="btn btn-primary"}}Return{{/link-to}} 
                 {{else}} 
                     {{#link-to 'books.borrow' book.id class="btn btn-primary"}}Borrow{{/link-to}} 
                 {{/if}}

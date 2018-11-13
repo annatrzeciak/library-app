@@ -5,5 +5,5 @@ export default DS.Model.extend({
   releaseYear: DS.attr('number'),
   author: DS.attr('string'),
   ISBN: DS.attr('string'),
-  reader: DS.belongsTo('reader'),
+  reader: DS.belongsTo('reader')
 });

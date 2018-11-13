@@ -11,8 +11,8 @@ export default Component.extend({
     },
 
     moreInfo(readerId) {
-      var reader = this.store.peekRecord("reader", readerId);
-      console.log(reader);
+      // var reader = this.store.peekRecord("reader", readerId);
+      // console.log(reader);
     }
   }
 });

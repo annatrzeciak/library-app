@@ -1,45 +1,6 @@
-<div class="form-horizontal">
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Title</label>
-        <div class="col-sm-10">
-            {{input type="text" value=book.title class="form-control" placeholder="Book title"}}
-        </div>
+<div class="card-pf card-pf-view card-pf-view-xs">
+    <div class="card-pf-header text-center">
+        <h1>Borrow book</h1>
     </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Author</label>
-        <div class="col-sm-10">
-            {{input type="text" value=book.author class="form-control" placeholder="Book author"}}
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Release year</label>
-        <div class="col-sm-10">
-            {{input type="number" min='1900' max='2100' step='1' value=book.releaseYear class="form-control" }}
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">ISBN</label>
-        <div class="col-sm-10">
-            {{input type="text" value=book.ISBN class="form-control" placeholder="Book ISBN"}}
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Reader</label>
-        <div class="col-sm-10">
-            <select class="form-control btn btn-default" onchange={{action 'selectReader' value="target.value" }}>
-                <option></option>
-                {{#each readers as |reader|}}
-                <option value={{reader.id}}>
-                    {{reader.firstName}} {{reader.lastName}}
-                    <small> {{reader.id}}</small>
-                </option>
-                {{/each}}
-            </select>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button disabled={{isDisabled}} type="submit" class="btn btn-primary" {{action 'borrowBook' book}}>Borrow</button>
-        </div>
-    </div>
+    {{book-rotation book=book readers=readers buttonLabel=buttonLabel action='borrowBook' }}
 </div>

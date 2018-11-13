@@ -5,5 +5,5 @@ export default DS.Model.extend({
   lastName: DS.attr('string'),
   address:  DS.attr('string'),
   phone:  DS.attr('string'),
-  books: DS.hasMany('book'),
+  books: DS.hasMany('book', { async: true, inverse: null })
 });

@@ -23,6 +23,8 @@ Router.map(function() {
     this.route("new");
     this.route("edit", { path: "/edit/:book_id" });
     this.route("borrow", { path: "/borrow/:book_id" });
+    this.route("return", { path: "/return/:book_id" });
+    
   });
 });
 
