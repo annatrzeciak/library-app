@@ -17,7 +17,7 @@ export default Route.extend({
   },
 
   actions: {
-    saveBook(newBook) {
+    saveBook(newBook) { 
       newBook.save().then(() => this.transitionTo("books"));
     },
 
