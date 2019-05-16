@@ -15,7 +15,7 @@ export default Route.extend({
   renderTemplate() {
     this.render("readers/form");
   },
-  
+
   actions: {
     saveReader(newReader) {
       newReader.save().then(() => this.transitionTo("readers"));
