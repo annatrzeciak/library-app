@@ -4,7 +4,7 @@ export default Route.extend({
   model(params) {
     return this.store.findRecord("reader", params.reader_id);
   },
-  
+
   setupController(controller, model) {
     this._super(controller, model);
 
