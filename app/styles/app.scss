@@ -1,5 +1,5 @@
 .navbar {
-    .navbar-toggle{
+    .navbar-toggle {
         padding-top: 14px;
     }
     li {
@@ -7,14 +7,39 @@
             padding-right: 4px;
             padding-left: 4px;
         }
-        
     }
-    .navbar-utility{
-        li{
+    .navbar-utility {
+        li {
             .btn.dropdown-toggle {
                 padding-top: 12px;
                 padding-bottom: 12px;
             }
         }
+    }
+}
+
+.mx-0 {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+@media (min-width: 992px) {
+    .list-view-pf .list-group-item-heading {
+        -ms-flex: 1 0 calc(40% - 20px);
+        flex: 1 0 calc(40% - 20px);
+        float: left;
+        font-size: 12px;
+        margin: 0 20px 0 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: calc(40% - 20px);
+    }
+    .list-view-pf .list-group-item-text {
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+        float: left;
+        margin: 0 40px 0 0;
+        width: calc(60% - 40px);
     }
 }
