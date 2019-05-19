@@ -4,20 +4,44 @@ const Reader = require("../models/reader");
 
 //load all readers from db
 router.get("", (req, res, next) => {
-  //find all readers in db
-  Reader.find().then(documents => {
-    res.status(200).json({
-      readers: documents.map(item => {
-        return {
-          id: item._id,
-          firstName: item.firstName,
-          lastName: item.lastName,
-          address: item.address,
-          phone: item.phone
-        };
-      })
+  var pageSize;
+  var currentPage;
+  if (req.query.page) {
+    pageSize = +req.query.page.size;
+    currentPage = +req.query.page.number;
+  }
+  const readerQuery = Reader.find();
+  let fatchedReders;
+  if (pageSize && currentPage) {
+    readerQuery
+      //don't load (pageSize * (currentPage + 1)) posts
+      .skip(pageSize * (currentPage - 1))
+      // get only (pageSize) posts
+      .limit(pageSize);
+  }
+  readerQuery
+    .then(documents => {
+      fatchedReders = documents;
+      return Reader.countDocuments();
+    })
+    .then(count => {
+      res.status(200).json({
+        // message: "Posts fatched succesfully",
+        readers: fatchedReders.map(item => {
+          return {
+            id: item._id,
+            firstName: item.firstName,
+            lastName: item.lastName,
+            address: item.address,
+            phone: item.phone,
+            books: item.books
+          };
+        }),
+        meta: {
+          count: count
+        }
+      });
     });
-  });
 });
 
 //save new reader in db
@@ -26,9 +50,10 @@ router.post("", (req, res, next) => {
     firstName: req.body.reader.firstName,
     lastName: req.body.reader.lastName,
     address: req.body.reader.address,
-    phone: req.body.reader.phone
+    phone: req.body.reader.phone,
+    books: req.body.reader.books
   });
-  reader.save().then((item) => {
+  reader.save().then(item => {
     console.log("Reader added successfully");
     res.status(201).json({
       reader: {
@@ -36,7 +61,8 @@ router.post("", (req, res, next) => {
         firstName: item.firstName,
         lastName: item.lastName,
         address: item.address,
-        phone: item.phone
+        phone: item.phone,
+        books: item.books
       }
     });
   });
@@ -53,7 +79,8 @@ router.get("/:id", (req, res, next) => {
           firstName: item.firstName,
           lastName: item.lastName,
           address: item.address,
-          phone: item.phone
+          phone: item.phone,
+          books: item.books
         }
       });
     } else {
@@ -70,17 +97,19 @@ router.put("/:id", (req, res, next) => {
     firstName: req.body.reader.firstName,
     lastName: req.body.reader.lastName,
     address: req.body.reader.address,
-    phone: req.body.reader.phone
+    phone: req.body.reader.phone,
+    books: req.body.reader.books
   });
   Reader.updateOne({ _id: req.params.id }, reader).then(item => {
-    console.log('Reader updated');
+    console.log("Reader updated");
     res.status(200).json({
       reader: {
         id: item._id,
         firstName: item.firstName,
         lastName: item.lastName,
         address: item.address,
-        phone: item.phone
+        phone: item.phone,
+        books: item.books
       }
     });
   });
@@ -89,7 +118,7 @@ router.put("/:id", (req, res, next) => {
 //delete reader
 router.delete("/:id", (req, res, next) => {
   Reader.deleteOne({ _id: req.params.id }).then(result => {
-    console.log('Reader deleted');
+    console.log("Reader deleted");
     res.status(200);
   });
 });

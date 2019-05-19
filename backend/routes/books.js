@@ -11,7 +11,8 @@ router.get("", (req, res, next) => {
           title: item.title,
           releaseYear: item.releaseYear,
           author: item.author,
-          ISBN: item.ISBN
+          ISBN: item.ISBN,
+          reader: item.reader
         };
       })
     });
@@ -24,7 +25,8 @@ router.post("", (req, res, next) => {
     title: req.body.book.title,
     releaseYear: req.body.book.releaseYear,
     author: req.body.book.author,
-    ISBN: req.body.book.ISBN
+    ISBN: req.body.book.ISBN,
+    reader: req.body.book.reader
   });
   book.save().then(item => {
     console.log("Book added successfully");
@@ -34,7 +36,8 @@ router.post("", (req, res, next) => {
         title: item.title,
         releaseYear: item.releaseYear,
         author: item.author,
-        ISBN: item.ISBN
+        ISBN: item.ISBN,
+        reader: item.reader
       }
     });
   });
@@ -51,7 +54,8 @@ router.get("/:id", (req, res, next) => {
           title: item.title,
           releaseYear: item.releaseYear,
           author: item.author,
-          ISBN: item.ISBN
+          ISBN: item.ISBN,
+          reader: item.reader
         }
       });
     } else {
@@ -68,7 +72,8 @@ router.put("/:id", (req, res, next) => {
     title: req.body.book.title,
     releaseYear:  req.body.book.releaseYear,
     author: req.body.book.author,
-    ISBN:  req.body.book.ISBN
+    ISBN:  req.body.book.ISBN,
+    reader: req.body.book.reader
   });
   Book.updateOne({ _id: req.params.id }, book).then(item => {
     console.log("Book updated");
@@ -78,7 +83,8 @@ router.put("/:id", (req, res, next) => {
         title: item.title,
         releaseYear: item.releaseYear,
         author: item.author,
-        ISBN: item.ISBN
+        ISBN: item.ISBN,
+        reader: item.reader
       }
     });
   });

@@ -41,6 +41,7 @@
     "ember-data": "~3.5.0",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.1.0",
+    "ember-math-helpers": "^2.11.1",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-model-validator": "^3.8.0",
     "ember-qunit": "^3.4.1",
@@ -59,6 +60,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "bower": "^1.8.4",
+    "ember-truth-helpers": "^2.1.0",
     "express": "^4.16.4",
     "install": "^0.12.2",
     "mongoose": "^5.5.8",

@@ -12,7 +12,10 @@ module.exports = function(defaults) {
           "angle-down",
           "angle-up",
           "angle-left",
+          "angle-double-left",
           "angle-right",
+          "angle-double-right",
+
           "user",
           "ellipsis-v",
           "plus",
@@ -27,6 +30,10 @@ module.exports = function(defaults) {
           "calendar-alt"
         ]
       }
+    },
+    'ember-math-helpers': {
+      only: ['add', 'sub', 'mult', 'div'],
+      except: ['random', 'tan']
     }
   });
 
