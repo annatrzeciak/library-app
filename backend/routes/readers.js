@@ -26,7 +26,6 @@ router.get("", (req, res, next) => {
     })
     .then(count => {
       res.status(200).json({
-        // message: "Posts fatched succesfully",
         readers: fatchedReders.map(item => {
           return {
             id: item._id,

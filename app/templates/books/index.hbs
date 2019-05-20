@@ -66,11 +66,12 @@
     </form> --}}
     <div class="row toolbar-pf-results">
       <div class="col-sm-12">
-        <h5>{{model.length}} Results</h5>
+        <h5>{{count}} Results</h5>
       </div>
     </div>
   </div>
 </div>
 <div id="pf-list-var6" class="list-group list-view-pf">
   {{#each model as |book|}} {{book-item book=book}} {{/each}}
+  {{#list-pagination model=model page=page size=size count=count}}{{/list-pagination}}
 </div>

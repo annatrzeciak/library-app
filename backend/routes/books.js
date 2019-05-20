@@ -3,20 +3,45 @@ const router = express.Router();
 const Book = require("../models/book");
 
 router.get("", (req, res, next) => {
-  Book.find().then(documents => {
-    res.status(200).json({
-      books: documents.map(item => {
-        return {
-          id: item._id,
-          title: item.title,
-          releaseYear: item.releaseYear,
-          author: item.author,
-          ISBN: item.ISBN,
-          reader: item.reader
-        };
-      })
+  var pageSize;
+  var currentPage;
+  if (req.query.page) {
+    pageSize = +req.query.page.size;
+    currentPage = +req.query.page.number;
+  }
+  const bookQuery = Book.find();
+  let fatchedBooks;
+  if (pageSize || currentPage) {
+    bookQuery
+      //don't load (pageSize * (currentPage + 1)) posts
+      .skip(pageSize * (currentPage - 1))
+      // get only (pageSize) posts
+      .limit(pageSize);
+  }
+  bookQuery
+    .then(documents => {
+      fatchedBooks = documents;
+      return Book.countDocuments();
+    })
+    .then(count => {
+      res.status(200).json({
+        books: fatchedBooks.map(item => {
+          return {
+            id: item._id,
+            title: item.title,
+            releaseYear: item.releaseYear,
+            author: item.author,
+            ISBN: item.ISBN,
+            reader: item.reader
+          };
+        }),
+        meta: {
+          count: count,
+          page: currentPage,
+          size: pageSize
+        }
+      });
     });
-  });
 });
 
 //save new book in db
@@ -70,9 +95,9 @@ router.put("/:id", (req, res, next) => {
   const book = new Book({
     _id: req.params.id,
     title: req.body.book.title,
-    releaseYear:  req.body.book.releaseYear,
+    releaseYear: req.body.book.releaseYear,
     author: req.body.book.author,
-    ISBN:  req.body.book.ISBN,
+    ISBN: req.body.book.ISBN,
     reader: req.body.book.reader
   });
   Book.updateOne({ _id: req.params.id }, book).then(item => {
@@ -93,7 +118,7 @@ router.put("/:id", (req, res, next) => {
 //delete book
 router.delete("/:id", (req, res, next) => {
   Book.deleteOne({ _id: req.params.id }).then(result => {
-    console.log('Book deleted');
+    console.log("Book deleted");
     res.status(200);
   });
 });
