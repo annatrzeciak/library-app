@@ -12,7 +12,7 @@ router.get("", (req, res, next) => {
   }
   const readerQuery = Reader.find();
   let fatchedReders;
-  if (pageSize && currentPage) {
+  if (pageSize || currentPage) {
     readerQuery
       //don't load (pageSize * (currentPage + 1)) posts
       .skip(pageSize * (currentPage - 1))
@@ -38,7 +38,9 @@ router.get("", (req, res, next) => {
           };
         }),
         meta: {
-          count: count
+          count: count,
+          page: currentPage,
+          size: pageSize
         }
       });
     });

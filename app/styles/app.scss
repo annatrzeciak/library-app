@@ -61,6 +61,19 @@ select {
     }
 }
 
+.spinner-container{
+  background: rgba(0,0,0,0.3);
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
 @media (min-width: 992px) {
     .list-view-pf .list-group-item-heading {
         -ms-flex: 1 0 calc(40% - 20px);

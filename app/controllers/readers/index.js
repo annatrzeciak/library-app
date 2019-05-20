@@ -2,6 +2,7 @@ import Controller from "@ember/controller";
 import { computed } from "@ember/object";
 
 export default Controller.extend({
+  loading: false,
   queryParams: ["page", "size"],
   page: 1,
   size: 10,
@@ -13,47 +14,23 @@ export default Controller.extend({
   }),
 
   actions: {
-    selectedResultsPerPage(resultPerPage) {
-      this.set("size", resultPerPage);
-      this.set("page", 1);
-      this.transitionToRoute("readers", {
-        queryParams: { page: { number: 1, size: resultPerPage } }
-      });
+    selectedResultsPerPage(resultsPerPage) {
+      this.transitionToRoute("/readers?size=" + resultsPerPage);
     },
-
-    goToFirstPage() {
-      this.set("page", 1);
-      this.transitionToRoute("readers", {
-        queryParams: { page: { number: 1 } }
-      });
-    },
-    goToPrevPage() {
-      this.set("page", this.page - 1);
-      this.transitionToRoute("readers", {
-        queryParams: { page: { number: this.page - 1 } }
-      });
-    },
-    goToNextPage() {
-      this.set("page", this.page + 1);
-      this.transitionToRoute("readers", {
-        queryParams: { page: { number: this.page + 1 } }
-      });
-    },
-    goToLastPage() {
-      this.set("page", this.lastPage);
-      this.transitionToRoute("readers", {
-        queryParams: { page: { number: this.lastPage } }
-      });
-    },
-    goToPage($event) {
-      if ($event.keyCode == "13") {
-        let goToPage = $event.target.value;
-        if (goToPage >= 1 && goToPage <= this.lastPage) {
-          this.set("page", goToPage);
-          this.transitionToRoute("readers", {
-            queryParams: { page: { number: goToPage } }
-          });
+    goToPage(value) {
+      let goToPage;
+      if (typeof value == "object") {
+        if (value.keyCode == "13") {
+          goToPage = value.target.value;
         }
+      } else {
+        goToPage = value;
+      }
+      if (goToPage >= 1 && goToPage <= this.lastPage) {
+        this.set("page", goToPage);
+        this.transitionToRoute("readers", {
+          queryParams: { page: { number: goToPage } }
+        });
       }
     }
   }
