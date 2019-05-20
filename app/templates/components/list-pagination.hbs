@@ -1,0 +1,59 @@
+<form class="content-view-pf-pagination  clearfix" id="" onsubmit="return false;">
+  <div class="form-group">
+    <div class="select">
+      <select class="btn btn-default" name="resultsSelected" onchange={{action 'selectedResultsPerPage' value="target.value" }}>
+        {{#if (eq size 5) }}
+        <option value="5" selected>5</option>{{/if}} {{#if (not-eq size 5) }}
+        <option value="5">5</option>{{/if}} {{#if (eq size 10) }}
+        <option value="10" selected>10</option>{{/if}} {{#if (not-eq size 10) }}
+        <option value="10">10</option>{{/if}} {{#if (eq size 15) }}
+        <option value="15" selected>15</option>{{/if}} {{#if (not-eq size 15) }}
+        <option value="15">15</option>{{/if}} {{#if (eq size 25) }}
+        <option value="25" selected>25</option>{{/if}} {{#if (not-eq size 25) }}
+        <option value="25">25</option>{{/if}} {{#if (eq size 50) }}
+        <option value="50" selected>50</option>{{/if}} {{#if (not-eq size 50) }}
+        <option value="50">50</option>{{/if}} {{#if (eq size 100) }}
+        <option value="100" selected>100</option>{{/if}} {{#if (not-eq size 5) }}
+        <option value="100">100</option>{{/if}}
+      </select>
+      {{fa-icon 'angle-down'}}
+    </div>
+    <span>per page</span>
+  </div>
+  <div class="form-group">
+    <span>
+      <span class="pagination-pf-items-current">{{add (mult (sub page 1) size) 1}} - {{if (eq page lastPage) count}}{{if (not-eq page lastPage) (mult page size)}}</span>
+      of
+      <span class="pagination-pf-items-total">{{count}}</span>
+    </span>
+    <ul class="pagination pagination-pf-back">
+      <li class={{if (lte page 1) "disabled"}}>
+        <a href="#" title="First Page" onclick={{action "goToPage" 1 }}>
+          {{fa-icon 'angle-double-left'}}
+        </a>
+      </li>
+      <li class={{if (lte page 1) "disabled"}}>
+        <a href="#" title="Previous Page" onclick={{action "goToPage" (sub page 1) }}>
+          {{fa-icon 'angle-left'}}
+        </a>
+      </li>
+    </ul>
+    <label for="-page" class="sr-only">Current Page</label>
+    <input class="pagination-pf-page" type="text" value="{{page}}" id="page" onkeyup={{action "goToPage"}}/>
+    <span>of
+      <span class="pagination-pf-pages">{{lastPage}}</span>
+    </span>
+    <ul class="pagination pagination-pf-forward">
+      <li class={{if (gte page lastPage) "disabled"}}>
+        <a href="#" title="Next Page" value=(page+1) onclick={{action "goToPage" (add page 1) }}>
+          {{fa-icon 'angle-right' }}
+        </a>
+      </li>
+      <li class={{if (gte page lastPage) "disabled"}}>
+        <a href="#" title="Last Page" onclick={{action "goToPage" lastPage }}>
+          {{fa-icon 'angle-double-right'}}
+        </a>
+      </li>
+    </ul>
+  </div>
+</form>
