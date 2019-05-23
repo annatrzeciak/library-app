@@ -27,6 +27,18 @@
     margin-right: 0;
 }
 
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+.pb-2 {
+    padding-bottom: 2rem;
+}
+
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -42,6 +54,20 @@ select {
         z-index: 1;
         cursor: pointer;
     }
+    &:focus {
+        border-color: #0088ce !important;
+        outline: 0 !important;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(0, 136, 206, .6);
+    }
+}
+
+input[type=text]:focus {
+    padding: 1px 3px 3px;
+    border-width: 1px !important;
+    ;
+    border-color: #0088ce !important;
+    outline: 0 !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(0, 136, 206, .6);
 }
 
 .select {
@@ -61,19 +87,19 @@ select {
     }
 }
 
-.spinner-container{
-  background: rgba(0,0,0,0.3);
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  z-index: 100;
-  top: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+.spinner-container {
+    background: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 @media (min-width: 992px) {
     .list-view-pf .list-group-item-heading {
         -ms-flex: 1 0 calc(40% - 20px);

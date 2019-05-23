@@ -6,4 +6,6 @@ export default DS.Model.extend({
   author: DS.attr('string'),
   ISBN: DS.attr('string'),
   reader: DS.belongsTo('reader')
+
+    //TODO validation
 });

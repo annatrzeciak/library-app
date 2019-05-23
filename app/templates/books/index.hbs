@@ -8,8 +8,8 @@
     </h1>
   </div>
 </div>
-<div class="row toolbar-pf mx-0">
-  <div class="col-sm-12">
+{{!-- <div class="row toolbar-pf mx-0">
+  <div class="col-sm-12"> --}}
     {{!--
     <form class="toolbar-pf-actions ">
       <div class="form-group toolbar-pf-filter">
@@ -69,8 +69,8 @@
         <h5>{{count}} Results</h5>
       </div>
     </div>
-  </div>
-</div>
+  {{!-- </div>
+</div> --}}
 <div id="pf-list-var6" class="list-group list-view-pf">
   {{#each model as |book|}} {{book-item book=book}} {{/each}}
   {{#list-pagination model=model page=page size=size count=count}}{{/list-pagination}}

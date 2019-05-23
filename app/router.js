@@ -26,6 +26,11 @@ Router.map(function() {
     this.route("return", { path: "/return/:book_id" });
 
   });
+
+  this.route('auth', function() {
+    this.route('login');
+    this.route('signup');
+  });
 });
 
 export default Router;

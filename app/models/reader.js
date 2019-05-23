@@ -7,5 +7,5 @@ export default DS.Model.extend( {
   phone: DS.attr("string"),
   books: DS.hasMany("book", { async: true, inverse: null }),
 
-  // validations !!!
+  //TODO validation
 });
