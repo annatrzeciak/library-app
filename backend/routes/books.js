@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Book = require("../models/book");
+const checkAuth = require("../middleware/check-auth");
 
 router.get("", (req, res, next) => {
   var pageSize;
@@ -45,7 +46,7 @@ router.get("", (req, res, next) => {
 });
 
 //save new book in db
-router.post("", (req, res, next) => {
+router.post("", checkAuth, (req, res, next) => {
   const book = new Book({
     title: req.body.book.title,
     releaseYear: req.body.book.releaseYear,
@@ -91,7 +92,7 @@ router.get("/:id", (req, res, next) => {
 });
 
 //update book
-router.put("/:id", (req, res, next) => {
+router.put("/:id", checkAuth, (req, res, next) => {
   const book = new Book({
     _id: req.params.id,
     title: req.body.book.title,
@@ -116,7 +117,7 @@ router.put("/:id", (req, res, next) => {
 });
 
 //delete book
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", checkAuth, (req, res, next) => {
   Book.deleteOne({ _id: req.params.id }).then(result => {
     console.log("Book deleted");
     res.status(200);

@@ -3,6 +3,7 @@
     <input type="checkbox">
   </div>
   <div class="list-view-pf-actions">
+    {{#if session.isAuthenticated}}
     <div class="dropdown pull-right dropdown-kebab-pf">
       <button class="btn btn-link dropdown-toggle" type="button" id="dropdownKebabRight9" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="true">
@@ -17,6 +18,7 @@
         </li>
       </ul>
     </div>
+    {{/if}}
   </div>
   <div class="list-view-pf-main-info">
     <div class="list-view-pf-left">

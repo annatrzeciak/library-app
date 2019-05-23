@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Reader = require("../models/reader");
+const checkAuth = require("../middleware/check-auth");
 
 //load all readers from db
 router.get("", (req, res, next) => {
@@ -46,7 +47,7 @@ router.get("", (req, res, next) => {
 });
 
 //save new reader in db
-router.post("", (req, res, next) => {
+router.post("", checkAuth, (req, res, next) => {
   const reader = new Reader({
     firstName: req.body.reader.firstName,
     lastName: req.body.reader.lastName,
@@ -92,7 +93,7 @@ router.get("/:id", (req, res, next) => {
 });
 
 //update reader
-router.put("/:id", (req, res, next) => {
+router.put("/:id", checkAuth, (req, res, next) => {
   const reader = new Reader({
     _id: req.params.id,
     firstName: req.body.reader.firstName,
@@ -117,7 +118,7 @@ router.put("/:id", (req, res, next) => {
 });
 
 //delete reader
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", checkAuth, (req, res, next) => {
   Reader.deleteOne({ _id: req.params.id }).then(result => {
     console.log("Reader deleted");
     res.status(200);

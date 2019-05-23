@@ -1,10 +1,12 @@
 import Route from "@ember/routing/route";
+import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
-export default Route.extend({
+export default Route.extend(ApplicationRouteMixin,{
+
   model(params) {
     return this.store.findRecord("book", params.book_id);
   },
-  
+
   setupController(controller, model) {
     this._super(controller, model);
 

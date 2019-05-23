@@ -27,7 +27,7 @@ Router.map(function() {
 
   });
 
-  this.route('auth', function() {
+  this.route('librarian', function() {
     this.route('login');
     this.route('signup');
   });

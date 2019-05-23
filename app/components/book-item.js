@@ -1,6 +1,7 @@
 import Component from "@ember/component";
 
 export default Component.extend({
+  session: Ember.inject.service("session"),
   actions: {
     deleteBook(book) {
       let confirmation = confirm("Are you sure?");
@@ -9,10 +10,5 @@ export default Component.extend({
         book.destroyRecord();
       }
     },
-
-    moreInfo(readerId) {
-      // var reader = this.store.peekRecord("reader", readerId);
-      // console.log(reader);
-    }
   }
 });

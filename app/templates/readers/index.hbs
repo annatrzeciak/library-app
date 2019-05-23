@@ -7,9 +7,11 @@
   <div class="card-pf-header ">
     <h1 class="row">
       <span class="col-xs-6">Readers list</span>
+        {{#if session.isAuthenticated}}
       <span class="col-xs-6 text-right">
         {{#link-to "readers.new" activeClass="active" class='btn btn-success'}} {{fa-icon 'plus'}} new reader {{/link-to}}
       </span>
+      {{/if}}
     </h1>
   </div>
 </div>

@@ -3,9 +3,8 @@
     <input type="checkbox">
   </div>
   <div class="list-view-pf-actions">
-
-    {{#if book.reader }} {{#link-to 'books.return' book.id class="btn btn-primary"}}Return{{/link-to}} {{else}} {{#link-to 'books.borrow'
-    book.id class="btn btn-primary"}}Borrow{{/link-to}}{{/if}}
+    {{#if session.isAuthenticated}} {{#if book.reader }} {{#link-to 'books.return' book.id class="btn btn-primary"}}Return{{/link-to}}
+    {{else}} {{#link-to 'books.borrow' book.id class="btn btn-primary"}}Borrow{{/link-to}}{{/if}}
 
     <div class="dropdown pull-right dropdown-kebab-pf">
       <button class="btn btn-link dropdown-toggle" type="button" id="dropdownKebabRight9" data-toggle="dropdown" aria-haspopup="true"
@@ -21,6 +20,7 @@
         </li>
       </ul>
     </div>
+    {{/if}}
   </div>
   <div class="list-view-pf-main-info">
     <div class="list-view-pf-left">

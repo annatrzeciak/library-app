@@ -1,49 +1,56 @@
-<nav class="navbar navbar-default navbar-pf" role="navigation">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+<nav class="navbar navbar-default navbar-pf" role="navigation" >
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">Library app </a>
+  </div>
+  <div class="collapse navbar-collapse navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-utility">
+
+      <li class="dropdown">
+        {{#unless session.isAuthenticated}} {{#link-to 'librarian.signup' tagName="button" class="btn btn-link"}}
+        <a href="">Signup</a>{{/link-to}} {{#link-to 'librarian.login' tagName="button" class="btn btn-link"}}
+        <a href="">Login</a>{{/link-to}}
+
+        {{else}}
+        <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+          <span class="pficon">{{fa-icon 'user'}}</span>
+          <span class="dropdown-title">Admin</span>
+          <span class="pficon">{{fa-icon 'caret-down'}}</span>
         </button>
-        <a class="navbar-brand" href="/">Library app  </a>
-    </div>
-    <div class="collapse navbar-collapse navbar-collapse-1">
-        <ul  class="nav navbar-nav navbar-utility">
-
-            <li class="dropdown">
-                <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                    <span class="pficon">{{fa-icon 'user'}}</span>
-                    <span class="dropdown-title">Admin</span>
-                    <span class="pficon">{{fa-icon 'caret-down'}}</span>
-                </button>
-                <ul class="dropdown-menu">
-                    {{#link-to 'admin.subscribers' tagName="li"}}
-                    <a href="">Subscribers</a>{{/link-to}}
-                    {{#link-to 'admin.messages' tagName="li"}}
-                    <a href="">Messages</a>{{/link-to}}
-                    {{#link-to 'admin.statistics' tagName="li"}}
-                    <a href="">Statistics</a>{{/link-to}}
-                </ul>
-            </li>
+        <ul class="dropdown-menu">
+          {{#link-to 'admin.subscribers' tagName="li"}}
+          <a href="">Subscribers</a>{{/link-to}} {{#link-to 'admin.messages' tagName="li"}}
+          <a href="">Messages</a>{{/link-to}} {{#link-to 'admin.statistics' tagName="li"}}
+          <a href="">Statistics</a>{{/link-to}}
+          <li>
+            <button {{action 'logout' }}>Logout</button>
+          </li>
         </ul>
-        <ul class="nav navbar-nav navbar-primary">
+        {{/unless}}
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-primary">
 
-            {{#link-to "index" activeClass="active" tagName="li"}}
-            <a href="">Home</a>
-            {{/link-to}} 
-            {{#link-to "readers" activeClass="active" tagName="li"}}
-            <a href="">Readers</a>
-            {{/link-to}}
-            {{#link-to "books" activeClass="active" tagName="li"}}
-            <a href="">Books</a>
-            {{/link-to}}
-            {{#link-to "about" activeClass="active" tagName="li"}}
-            <a href="">About</a>
-            {{/link-to}} 
-            {{#link-to "contact" activeClass="active" tagName="li"}}
-            <a href="">Contact</a>
-            {{/link-to}}
-        </ul>
-    </div>
+      {{#link-to "index" activeClass="active" tagName="li"}}
+      <a href="">Home</a>
+      {{/link-to}}
+      {{#link-to "readers" activeClass="active" tagName="li"}}
+      <a href="">Readers</a>
+      {{/link-to}}
+      {{#link-to "books" activeClass="active" tagName="li"}}
+      <a href="">Books</a>
+      {{/link-to}}
+      {{#link-to "about" activeClass="active" tagName="li"}}
+      <a href="">About</a>
+      {{/link-to}}
+      {{#link-to "contact" activeClass="active" tagName="li"}}
+      <a href="">Contact</a>
+      {{/link-to}}
+    </ul>
+  </div>
 </nav>

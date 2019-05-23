@@ -6,6 +6,8 @@ const readersRoutes = require("./routes/readers");
 const booksRoutes = require("./routes/books");
 const messagesRoutes = require("./routes/messages");
 const subscribersRoutes = require("./routes/subscribers");
+const librarianRoutes = require("./routes/librarian");
+
 
 const app = express();
 mongoose
@@ -25,7 +27,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
@@ -38,5 +40,7 @@ app.use("/api/readers", readersRoutes);
 app.use("/api/books", booksRoutes);
 app.use("/api/messages", messagesRoutes);
 app.use("/api/subscribers", subscribersRoutes);
+app.use("/api/librarian", librarianRoutes);
+
 
 module.exports = app;

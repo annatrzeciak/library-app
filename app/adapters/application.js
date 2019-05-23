@@ -1,6 +1,8 @@
 import DS from 'ember-data';
 
-export default DS.RESTAdapter.extend({
+import TokenAuthorizerMixin from 'ember-simple-auth-token/mixins/token-authorizer';
+
+export default DS.RESTAdapter.extend(TokenAuthorizerMixin,{
   host: 'http://localhost:3000',
   namespace: 'api',
 });

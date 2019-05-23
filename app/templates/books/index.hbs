@@ -2,9 +2,11 @@
   <div class="card-pf-header ">
     <h1 class="row">
       <span class="col-xs-6">Books list</span>
+        {{#if session.isAuthenticated}}
       <span class="col-xs-6 text-right">
         {{#link-to "books.new" activeClass="active" class='btn btn-success'}} {{fa-icon 'plus'}} new book {{/link-to}}
       </span>
+      {{/if}}
     </h1>
   </div>
 </div>

@@ -1,6 +1,8 @@
 import Route from "@ember/routing/route";
 
-export default Route.extend({
+import ApplicationRouteMixin from "ember-simple-auth/mixins/application-route-mixin";
+
+export default Route.extend(ApplicationRouteMixin, {
   model() {
     return this.store.createRecord("book");
   },
@@ -17,7 +19,7 @@ export default Route.extend({
   },
 
   actions: {
-    saveBook(newBook) { 
+    saveBook(newBook) {
       newBook.save().then(() => this.transitionTo("books"));
     },
 

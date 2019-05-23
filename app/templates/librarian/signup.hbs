@@ -8,28 +8,29 @@
           </header>
           <form class="mb-1">
             <div class="form-group">
-              <label class="sr-only" for="emailInput">Email address</label>
-              <input type="email" class="form-control  input-lg" id="emailInput" placeholder="Email address" required>
+              {{input type="email" value=model.email class="form-control input-lg" placeholder="Email address" required=true}}
             </div>
             <div class="form-group">
               <label class="sr-only" for="firstNameInput">First name</label>
-              <input type="text" class="form-control  input-lg" id="firstNameInput" placeholder="First name" required>
+              {{input type="text" value=model.firstName class="form-control input-lg" placeholder="First name" required=true}}
+
             </div>
             <div class="form-group">
               <label class="sr-only" for="lastNameInput">Last name</label>
-              <input type="text" class="form-control  input-lg" id="lastNameInput" placeholder="Last name" required>
+              {{input type="text" value=model.lastName class="form-control input-lg" placeholder="Last name" required=true}}
             </div>
             <div class="form-group">
               <label class="sr-only" for="passwordInput">Password
               </label>
-              <input type="password" class="form-control input-lg" id="passwordInput" placeholder="Password" required>
+              {{input type="password" value=model.password class="form-control input-lg" placeholder="Password" required=true}}
             </div>
-             <div class="form-group">
+            {{!--
+            <div class="form-group">
               <label class="sr-only" for="passwordConfirmationInput">Password confirmation
               </label>
-              <input type="password" class="form-control input-lg" id="passwordConfirmationInput" placeholder="Password confirmation" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block btn-lg">Log In</button>
+              {{input type="password" value=passwordConfirmation class="form-control input-lg" placeholder="Password confirmation" required=true}}
+            </div> --}}
+            <button type="submit" class="btn btn-primary btn-block btn-lg" {{action 'signup' model}}>Sign up</button>
           </form>
           <p class="login-pf-signup ">You already have an account?
             <a href="#">Login</a>

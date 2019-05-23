@@ -1,7 +1,8 @@
 import Route from "@ember/routing/route";
 import { hash } from "rsvp";
+import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
-export default Route.extend({
+export default Route.extend(ApplicationRouteMixin, {
   model(params) {
     return hash({
       book: this.store.findRecord("book", params.book_id)
