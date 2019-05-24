@@ -1,30 +1,28 @@
-import Component from "@ember/component";
+import Controller from "@ember/controller";
 import { computed } from "@ember/object";
 
-export default Component.extend({
-  buttonLabel: "Save",
-
+export default Controller.extend({
   errors: null,
+  emailError: computed("errors", function() {
+    return this.model.get("validations.attrs.email.messages").join("; ");
+  }),
   firstNameError: computed("errors", function() {
     return this.model.get("validations.attrs.firstName.messages").join("; ");
   }),
   lastNameError: computed("errors", function() {
     return this.model.get("validations.attrs.lastName.messages").join("; ");
   }),
-  addressError: computed("errors", function() {
-    return this.model.get("validations.attrs.address.messages").join("; ");
-  }),
-  phoneError: computed("errors", function() {
-    return this.model.get("validations.attrs.phone.messages").join("; ");
+  passwordError: computed("errors", function() {
+    return this.model.get("validations.attrs.password.messages").join("; ");
   }),
 
   actions: {
-    buttonClicked(param) {
+    signup(newLibrarian) {
       this.set("errors", this.model.get("validations.errors"));
 
       if (this.model.get("validations.isValid")) {
-        this.sendAction("action", param);
-        //TODO server errors
+        newLibrarian.save().then(() => this.transitionToRoute("login"));
       }
-    }}
+    }
+  }
 });

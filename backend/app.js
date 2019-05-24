@@ -40,7 +40,7 @@ app.use("/api/readers", readersRoutes);
 app.use("/api/books", booksRoutes);
 app.use("/api/messages", messagesRoutes);
 app.use("/api/subscribers", subscribersRoutes);
-app.use("/api/librarian", librarianRoutes);
+app.use("/api/librarians", librarianRoutes);
 
 
 module.exports = app;

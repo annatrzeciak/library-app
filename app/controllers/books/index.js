@@ -2,6 +2,8 @@ import Controller from "@ember/controller";
 import { computed } from "@ember/object";
 
 export default Controller.extend({
+  session: Ember.inject.service("session"),
+
   queryParams: ["page", "size"],
   page: 1,
   size: 10,

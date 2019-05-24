@@ -45,8 +45,6 @@ router.post("/login", (req, res, next) => {
       return bcrypt.compare(req.body.password, librarian.password);
     })
     .then(result => {
-      console.log(result);
-
       if (!result) {
         return res.status(401).json({
           message: "Auth failed"
@@ -55,11 +53,11 @@ router.post("/login", (req, res, next) => {
       const token = jwt.sign(
         { email: fetchedLibrarian.email, librarianId: fetchedLibrarian._id },
         "veryVerySecretKey",
-        { expiresIn: "1min" }
+        { expiresIn: "1h" }
       );
       return res.status(200).json({
         token: token,
-        exp: ((new Date()).getTime() + 60*1000)
+        exp: ((new Date()).getTime() + 60*60*1000)
       });
     })
     .catch(err => {

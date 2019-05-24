@@ -8,7 +8,8 @@ export default Component.extend({
 
       if (confirmation) {
         book.destroyRecord();
+        //TODO refresh model before delete element
       }
-    },
+    }
   }
 });

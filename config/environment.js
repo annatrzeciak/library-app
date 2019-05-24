@@ -22,7 +22,7 @@ module.exports = function(environment) {
       // when it is created
     },
     "ember-simple-auth-token": {
-      serverTokenEndpoint: "http://localhost:3000/api/librarian/login",
+      serverTokenEndpoint: "http://localhost:3000/api/librarians/login",
       authorizationHeaderName: "Authorization",
       authorizationPrefix: "Bearer ",
     }

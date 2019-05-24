@@ -7,22 +7,39 @@
             <h1>Create New Librarian Account</h1>
           </header>
           <form class="mb-1">
-            <div class="form-group">
-              {{input type="email" value=model.email class="form-control input-lg" placeholder="Email address" required=true}}
-            </div>
-            <div class="form-group">
-              <label class="sr-only" for="firstNameInput">First name</label>
-              {{input type="text" value=model.firstName class="form-control input-lg" placeholder="First name" required=true}}
+            <div class="form-group {{if (and errors emailError) 'has-error'}}">
 
+              {{input type="email" value=model.email class="form-control input-lg" placeholder="Email address" required=true}}
+              {{#if (and errors emailError)}}
+              <span class="text-danger">
+                {{emailError}}</span>
+              {{/if}}
             </div>
-            <div class="form-group">
+            <div class="form-group {{if (and errors firstNameError) 'has-error'}}">
+              <label class="sr-only" for="firstNameInput">First name</label>
+
+              {{input type="text" value=model.firstName class="form-control input-lg" placeholder="First name" required=true}}
+              {{#if (and errors firstNameError)}}
+                <span class="text-danger">
+                {{firstNameError}}</span>
+              {{/if}}
+            </div>
+            <div class="form-group {{if (and errors lastNameError) 'has-error'}}">
               <label class="sr-only" for="lastNameInput">Last name</label>
               {{input type="text" value=model.lastName class="form-control input-lg" placeholder="Last name" required=true}}
+              {{#if (and errors lastNameError)}}
+                <span class="text-danger">
+                {{lastNameError}}</span>
+              {{/if}}
             </div>
-            <div class="form-group">
+            <div class="form-group  {{if (and errors passwordError) 'has-error'}}">
               <label class="sr-only" for="passwordInput">Password
               </label>
               {{input type="password" value=model.password class="form-control input-lg" placeholder="Password" required=true}}
+              {{#if (and errors passwordError)}}
+                <span class="text-danger">
+                {{passwordError}}</span>
+              {{/if}}
             </div>
             {{!--
             <div class="form-group">
@@ -32,8 +49,7 @@
             </div> --}}
             <button type="submit" class="btn btn-primary btn-block btn-lg" {{action 'signup' model}}>Sign up</button>
           </form>
-          <p class="login-pf-signup ">You already have an account?
-            <a href="#">Login</a>
+          <p class="login-pf-signup ">You already have an account? {{#link-to 'login'}}Login{{/link-to}}
           </p>
         </div>
       </div>

@@ -12,8 +12,8 @@
     <ul class="nav navbar-nav navbar-utility">
 
       <li class="dropdown">
-        {{#unless session.isAuthenticated}} {{#link-to 'librarian.signup' tagName="button" class="btn btn-link"}}
-        <a href="">Signup</a>{{/link-to}} {{#link-to 'librarian.login' tagName="button" class="btn btn-link"}}
+        {{#unless session.isAuthenticated}} {{#link-to 'signup' tagName="button" class="btn btn-link"}}
+        <a href="">Signup</a>{{/link-to}} {{#link-to 'login' tagName="button" class="btn btn-link"}}
         <a href="">Login</a>{{/link-to}}
 
         {{else}}
