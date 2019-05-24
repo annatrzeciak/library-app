@@ -9,6 +9,7 @@ export default Component.extend({
 
       if (confirmation) {
         reader.destroyRecord();
+        //TODO refresh model before delete element
       }
     }
   }
